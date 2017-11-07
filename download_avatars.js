@@ -43,12 +43,14 @@ function downloadImageByUrl(url, filePath){
 getRepoContributors(repoOwner, repoName, function(err, contributors) {
   console.log("Errors:", err);
   contributors.forEach(function(contributor) {
+    if (repoOwner === undefined || repoName === undefined) {
+      console.log("Put something in")
+    }
     var filePath = 'avatars/' + contributor.login + '.jpg'
     var url = contributor.avatar_url;
-    //  contributor.avatar_url + contributor.login + '.jpg'
+
     downloadImageByUrl(url, filePath);
   })
 });
-
 
 
